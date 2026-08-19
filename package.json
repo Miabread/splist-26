@@ -1,0 +1,8 @@
+{
+    "name": "splist-26",
+    "private": true,
+    "devDependencies": {
+        "oxfmt": "^0.59.0",
+        "oxlint": "~1.74.0"
+    }
+}
