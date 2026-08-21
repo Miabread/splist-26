@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 
-const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => i + b);
+const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => i + b + 1);
 </script>
 
 <template>
@@ -12,13 +12,13 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
                 <div
                     v-for="i in arr(3)"
                     :key="i"
-                    class="bg-orange-300 rounded-lg w-full aspect-square grid place-items-center text-mist-800 text-xl"
+                    class="bg-orange-300 rounded-xl w-full aspect-square grid place-items-center text-mist-800 text-xl"
                 ></div>
                 <hr class="border-t border-mist-700" />
                 <div
                     v-for="i in arr(20, 3)"
                     :key="i"
-                    class="bg-orange-300 rounded-lg w-full aspect-square grid place-items-center text-mist-800 text-xl"
+                    class="bg-orange-300 rounded-xl w-full aspect-square grid place-items-center text-mist-800 text-xl"
                 ></div>
             </nav>
 
@@ -37,13 +37,13 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
                             <div
                                 class="bg-mist-300 rounded-lg w-5 h-5 grid place-items-center text-mist-800 text-xs"
                             ></div>
-                            Thread {{ i + 1 }}
+                            Thread {{ i }}
                         </span>
                         <span v-for="j in arr(i)" :key="j" class="ml-5 flex gap-2.5 items-center">
                             <div
                                 class="bg-mist-300 rounded-lg w-5 h-5 grid place-items-center text-mist-800 text-xs"
                             ></div>
-                            Thread {{ j + 1 }}
+                            Thread {{ j }}
                         </span>
                     </template>
                 </div>
@@ -54,12 +54,23 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
                     <div class="bg-mist-300 rounded-lg w-5 h-5 grid place-items-center text-mist-800 text-xs"></div>
                     Thread Name
                 </header>
-                <div class="flex-1 p-4">Main Area</div>
+                <div class="flex-1 p-4"></div>
             </main>
 
             <aside class="w-64 h-full border-l border-t border-mist-700 bg-mist-800">
                 <header class="border-b border-mist-700 p-4 h-14"></header>
-                <div class="flex-1 p-4">Right Sidebar</div>
+                <div class="flex-1 p-4 gap-2.5 flex flex-col">
+                    <div class="flex items-center gap-2.5" v-for="i in arr(7)" :key="i">
+                        <div
+                            class="h-8 w-8 rounded-full ring-1 ring-mist-700 bg-blue-300 grid place-items-center text-mist-800 text-base"
+                        ></div>
+
+                        <span class="flex flex-col">
+                            <span>User {{ i }}</span>
+                            <span class="text-xs text-mist-300">Super {{ i }} status</span>
+                        </span>
+                    </div>
+                </div>
             </aside>
 
             <div class="absolute bottom-0 flex w-full">
