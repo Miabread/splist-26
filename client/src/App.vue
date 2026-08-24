@@ -1,26 +1,38 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { onClickOutside } from '@vueuse/core';
+import { ref } from 'vue';
+import { range } from './util';
 
-const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => i + b + 1);
+const isConnectionsOpen = ref(false);
+const sidebarRef = ref(null);
+
+const toggleConnectionsPane = () => {
+    isConnectionsOpen.value = !isConnectionsOpen.value;
+};
+
+onClickOutside(sidebarRef, () => {
+    if (isConnectionsOpen.value) isConnectionsOpen.value = false;
+});
 </script>
 
 <template>
-    <div class="w-dvw h-dvh bg-mist-900 text-mist-100 flex relative">
+    <div class="w-dvw h-dvh bg-mist-900 text-mist-100 flex relative overflow-hidden">
         <nav class="w-12 h-full mx-2.5 mt-2 px-0.5 space-y-2.5 justify-center overflow-y-auto scrollbar-none">
             <div
-                v-for="i in arr(3)"
+                v-for="i in range(3)"
                 :key="i"
                 class="bg-orange-300 rounded-xl w-full aspect-square grid place-items-center text-mist-800 text-xl"
             ></div>
             <hr class="border-t border-mist-700" />
             <div
-                v-for="i in arr(20, 3)"
+                v-for="i in range(3, 20)"
                 :key="i"
                 class="bg-orange-300 rounded-xl w-full aspect-square grid place-items-center text-mist-800 text-xl"
             ></div>
         </nav>
 
-        <aside class="w-64 h-full border-l border-t border-mist-700 bg-mist-800 flex flex-col">
+        <aside class="w-64 h-full border-l border-mist-700 bg-mist-800 flex flex-col">
             <header class="border-b border-mist-700 p-4 h-14 flex gap-2.5 items-center">
                 <div class="bg-orange-300 rounded-lg w-5 h-5 grid place-items-center text-mist-800 text-xs"></div>
                 Server Name
@@ -28,12 +40,12 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
             <div class="flex-1 p-4 gap-2.5 flex flex-col">
                 <span class="flex gap-2.5 items-center"> <Icon icon="lucide:list-tree" inline /> Threads </span>
                 <hr class="border-t border-mist-700" />
-                <template v-for="i in arr(4)" :key="i">
+                <template v-for="i in range(4)" :key="i">
                     <span class="flex gap-2.5 items-center">
                         <div class="bg-mist-700 rounded-lg w-5 h-5 grid place-items-center text-xs">#</div>
                         Thread {{ i }}
                     </span>
-                    <span v-for="j in arr(i)" :key="j" class="ml-5 flex gap-2.5 items-center">
+                    <span v-for="j in range(i)" :key="j" class="ml-5 flex gap-2.5 items-center">
                         <div class="bg-mist-700 rounded-lg w-5 h-5 grid place-items-center text-xs">#</div>
                         Thread {{ j }}
                     </span>
@@ -41,7 +53,7 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
             </div>
         </aside>
 
-        <main class="flex-1 h-full border-l border-t border-mist-700 bg-mist-800">
+        <main class="flex-1 h-full border-l border-mist-700 bg-mist-800">
             <header class="border-b border-mist-700 p-4 h-14 flex gap-2.5 items-center">
                 <div class="bg-mist-700 rounded-lg w-5 h-5 grid place-items-center text-xs">#</div>
                 Thread Name
@@ -49,10 +61,10 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
             <div class="flex-1 p-4"></div>
         </main>
 
-        <aside class="w-64 h-full border-l border-t border-mist-700 bg-mist-800">
+        <aside class="w-64 h-full border-l border-mist-700 bg-mist-800">
             <header class="border-b border-mist-700 p-4 h-14"></header>
             <div class="flex-1 p-4 gap-2.5 flex flex-col">
-                <div class="flex items-center gap-2.5" v-for="i in arr(7)" :key="i">
+                <div class="flex items-center gap-2.5" v-for="i in range(7)" :key="i">
                     <div
                         class="h-8 w-8 rounded-full ring-1 ring-mist-700 bg-blue-300 grid place-items-center text-mist-800 text-base"
                     ></div>
@@ -74,15 +86,18 @@ const arr = (length: number, b: number = 0) => Array.from({ length }, (_, i) => 
 
                     <div class="ml-auto flex flex-row -space-x-3 overflow-hidden">
                         <div
-                            v-for="i in arr(4)"
+                            v-for="i in range(4)"
                             :key="i"
                             class="h-8 w-8 rounded-full border-mist-700 bg-blue-300 grid place-items-center text-mist-800 text-base"
                         ></div>
 
                         <div class="h-8 w-8 rounded-full border-mist-700 bg-mist-800 text-base font-semibold">
-                            <div class="h-full w-full flex items-center justify-center text-center">
+                            <button
+                                @click="toggleConnectionsPane"
+                                class="h-full w-full flex items-center justify-center text-center"
+                            >
                                 <Icon icon="lucide:radio-tower" />
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
