@@ -7,3 +7,5 @@ const app = createApp(App);
 app.use(router);
 
 app.mount('#app');
+
+console.log('Github actions attempt 3');
