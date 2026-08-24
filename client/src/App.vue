@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue';
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';
-import { cn, range } from './util';
+import { range } from './util';
 
 const isConnectionsOpen = ref(false);
 const connectionsPaneRef = ref(null);
@@ -24,7 +24,7 @@ onClickOutside(
 
 <template>
     <div
-        class="w-dvw h-dvh bg-mist-950 text-mist-100 grid grid-cols-[--spacing(16)_--spacing(64)_1fr_--spacing(64)] grid-rows-[--spacing(16)_1fr_--spacing(16)]"
+        class="w-dvw h-dvh bg-mist-950 text-mist-100 grid grid-cols-[--spacing(16)_--spacing(64)_1fr_--spacing(64)] grid-rows-[--spacing(calc(16-2.5))_1fr_--spacing(16)]"
     >
         <nav class="col-[1/1] row-[1/4] mx-2.5 mt-2 px-0.5 space-y-2.5 justify-center overflow-y-auto scrollbar-none">
             <div
@@ -88,12 +88,7 @@ onClickOutside(
 
         <footer
             ref="clientPaneRef"
-            :class="
-                cn(
-                    'col-[1/3] row-[3/3] rounded-b-lg border border-mist-700 bg-mist-800 mx-2.5 mb-2.5 gap-5 px-2.5 drop-shadow-2xl flex flex-row-reverse items-center',
-                    !isConnectionsOpen && 'rounded-t-lg',
-                )
-            "
+            class="col-[1/3] row-[3/3] rounded-lg border border-mist-700 bg-mist-800 mx-2.5 mb-2.5 gap-5 px-2.5 drop-shadow-2xl flex flex-row-reverse items-center"
         >
             <Icon icon="lucide:settings" class="h-5 w-5" />
             <Icon icon="lucide:file-chart-column" class="h-5 w-5" />
@@ -115,18 +110,30 @@ onClickOutside(
             </button>
         </footer>
 
-        <aside
-            v-if="isConnectionsOpen"
-            ref="connectionsPaneRef"
-            class="col-[1/3] row-[2/2] rounded-t-lg border-x border-t border-mist-700 bg-mist-800 mx-2.5 mt-10 drop-shadow-2xl"
+        <Transition
+            enter-active-class="transform transition duration-300 ease-out origin-bottom"
+            enter-from-class="scale-y-0"
+            enter-to-class="scale-y-100"
+            leave-active-class="transform transition duration-200 ease-in origin-bottom"
+            leave-from-class="scale-y-100"
+            leave-to-class="scale-y-0"
         >
-            meow
-        </aside>
+            <aside
+                v-if="isConnectionsOpen"
+                ref="connectionsPaneRef"
+                class="col-[1/3] row-[2/2] rounded-lg border-x border-t border-mist-700 bg-mist-800 m-2.5 mt-10 drop-shadow-2xl"
+            >
+                meow
+            </aside>
+        </Transition>
 
         <footer
             class="col-[3/3] row-[3/3] rounded-lg border border-mist-700 bg-mist-800 mx-2.5 mb-2.5 px-2.5 drop-shadow-2xl flex items-center"
         >
-            <span class="text-mist-300 flex items-center">Message Thread 1</span>
+            <textarea
+                class="w-full h-full text-mist-300 flex items-center resize-none content-center focus:outline-none"
+                placeholder="Message Thread 1"
+            />
         </footer>
 
         <footer
