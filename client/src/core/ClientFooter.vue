@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { onClickOutside } from '@vueuse/core';
+import { onClickOutside, useLocalStorage } from '@vueuse/core';
 import { ref } from 'vue';
-import { range } from '../util';
+import { parseJwtBody, range } from '../util';
 
 const isConnectionsOpen = ref(false);
 const connectionsPaneRef = ref(null);
@@ -20,6 +20,27 @@ onClickOutside(
     },
     { ignore: [clientPaneRef] },
 );
+
+interface Connection {
+    sub: string;
+    sub_name: string;
+    iss: string;
+    iss_name: string;
+    jwt: string;
+}
+
+const connections = useLocalStorage('connections', new Map<number, Connection>());
+
+const nextConnectionId = useLocalStorage('connectionId', 0);
+const getNextConnectionId = () => nextConnectionId.value++;
+
+const newConnectionToken = ref('');
+
+const createNewConnection = () => {
+    const body = parseJwtBody(newConnectionToken.value);
+    body['jwt'] = newConnectionToken;
+    connections.value.set(getNextConnectionId(), body);
+};
 </script>
 
 <template>
@@ -58,9 +79,21 @@ onClickOutside(
         <aside
             v-if="isConnectionsOpen"
             ref="connectionsPaneRef"
-            class="col-[1/3] row-[2/2] rounded-lg border-x border-t border-mist-700 bg-mist-800 m-2.5 mt-10 drop-shadow-2xl"
+            class="col-[1/3] row-[2/2] rounded-lg border-x border-t border-mist-700 bg-mist-800 m-2.5 mt-10 p-2.5 drop-shadow-2xl flex flex-col justify-between"
         >
-            meow
+            <div class="flex-1 flex flex-col">
+                <span v-for="[id, value] in connections" :key="id"
+                    >{{ id }}. {{ value.sub_name }} @ {{ value.iss_name }}</span
+                >
+            </div>
+            <input
+                type="text"
+                autocomplete="off"
+                class="bg-mist-900 border border-mist-700 rounded self-end w-full focus:outline-none p-1"
+                placeholder="Add new connection token"
+                v-model="newConnectionToken"
+                @keypress.enter="createNewConnection"
+            />
         </aside>
     </Transition>
 </template>
