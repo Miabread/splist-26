@@ -5,9 +5,9 @@ on:
     # Runs on pushes targeting the default branch
     push:
         branches: ['main']
-        # Only trigger if files in the client folder change
-        paths:
-            - 'client/**'
+        # # Only trigger if files in the client folder change
+        # paths:
+        #     - 'client/**'
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
@@ -50,7 +50,7 @@ jobs:
 
             - name: Build client
               # Runs the build command specifically inside the client subfolder workspace
-              run: pnpm --filter client build
+              run: pnpm --filter client... build
 
             - name: Setup Pages
               uses: actions/configure-pages@v5
