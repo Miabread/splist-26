@@ -81,10 +81,35 @@ const createNewConnection = () => {
             ref="connectionsPaneRef"
             class="col-[1/3] row-[2/2] rounded-lg border-x border-t border-mist-700 bg-mist-800 m-2.5 mt-10 p-2.5 drop-shadow-2xl flex flex-col justify-between"
         >
-            <div class="flex-1 flex flex-col">
-                <span v-for="[id, value] in connections" :key="id"
-                    >{{ id }}. {{ value.sub_name }} @ {{ value.iss_name }}</span
-                >
+            <div
+                class="flex-1 grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] content-start gap-x-2.5 gap-y-5 items-center"
+            >
+                <template v-for="[id, value] in connections" :key="id">
+                    <div class="flex items-center gap-2.5">
+                        <div class="h-8 w-8 flex-none rounded-xl bg-orange-300 grid place-items-center"></div>
+
+                        <span class="flex flex-col min-w-0">
+                            <span class="truncate">{{ value.iss_name }}</span>
+                            <span class="text-xs text-mist-300 truncate">{{
+                                value.iss.replace(/^https?:\/\//i, '')
+                            }}</span>
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2.5">
+                        <div class="h-8 w-8 flex-none rounded-full bg-blue-300 grid place-items-center"></div>
+
+                        <span class="flex flex-col min-w-0">
+                            <span class="truncate">{{ value.sub_name }}</span>
+                            <span class="text-xs text-mist-300 truncate">{{ value.sub }}</span>
+                        </span>
+                    </div>
+
+                    <div class="flex gap-2.5">
+                        <Icon icon="lucide:square-play" class="h-5 w-5" />
+                        <Icon icon="lucide:trash-2" class="h-5 w-5" />
+                    </div>
+                </template>
             </div>
             <input
                 type="text"
