@@ -10,11 +10,10 @@ export const gatewayApp = new Hono().get(
     async (c) => {
         const { userId } = c.req.valid('query');
 
-        // Issue a JWT signed uniquely by THIS server's key
         const token = await sign(
             {
                 sub: userId,
-                sub_name: 'TODO',
+                sub_name: 'Username',
                 iss: 'http://localhost:3000/',
                 iss_name: 'Localhost',
             },
