@@ -1,8 +1,12 @@
+import 'dotenv/config';
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { gatewayApp } from './gateway.js';
 import { sessionApp } from './session.js';
 import { cors } from 'hono/cors';
+import { drizzle } from 'drizzle-orm/libsql';
+
+export const db = drizzle(process.env.DB_FILE_NAME!);
 
 const app = new Hono()
     .use(
