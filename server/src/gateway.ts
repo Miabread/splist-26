@@ -3,8 +3,8 @@ import { sign } from 'hono/jwt';
 import { NETWORK_AUTH_SECRET } from './config.js';
 import { zValidator } from '@hono/zod-validator';
 import * as z from 'zod';
-import { db } from './index.js';
-import { usersTable } from './db/schema.js';
+// import { db } from './index.js';
+// import { usersTable } from './db/schema.js';
 
 export const gatewayApp = new Hono().get(
     '/devkey',
@@ -12,9 +12,7 @@ export const gatewayApp = new Hono().get(
     async (c) => {
         const { userId } = c.req.valid('query');
 
-        const user = await db.query.users.findFirst;
-
-        let foo = user;
+        // const user = await db.query.users.findFirst({ userId });
 
         const token = await sign(
             {
