@@ -7,10 +7,10 @@ import { Icon } from '@iconify/vue';
     <aside
         class="col-[2/2] row-[2/4] flex-1 p-4 gap-2.5 flex flex-col border-l border-mist-700 bg-mist-900 rounded-tl-lg overflow-y-auto scrollbar-none"
     >
-    <div class="flex items-center gap-2.5">
-        <div
-            class="h-8 w-8 aspect-square rounded-full bg-blue-300 grid place-items-center text-mist-800 text-base"
-        ></div>
+        <div class="flex items-center gap-2.5">
+            <div
+                class="h-8 w-8 aspect-square rounded-full bg-blue-300 grid place-items-center text-mist-800 text-base"
+            ></div>
 
             <span class="flex flex-col">
                 <span>You</span>
@@ -18,12 +18,12 @@ import { Icon } from '@iconify/vue';
             </span>
         </div>
 
-        <span class="flex gap-2.5 items-center text-mist-300 text-sm mt-2.5"><span>Following</span> <Icon icon="lucide:chevron-down" inline /></span>
+        <span class="flex gap-2.5 items-center text-mist-300 text-sm mt-2.5"
+            ><span>Following</span> <Icon icon="lucide:chevron-down" inline
+        /></span>
 
         <div class="flex items-center gap-2.5 ml-5" v-for="i in range(7)" :key="i">
-            <div
-                class="h-8 w-8 rounded-lg bg-mist-700 grid place-items-center text-mist-800 text-base"
-            ></div>
+            <div class="h-8 w-8 rounded-lg bg-mist-700 grid place-items-center text-mist-800 text-base"></div>
 
             <span class="flex flex-col">
                 <span>Thread {{ i + 1 }}</span>
@@ -31,12 +31,12 @@ import { Icon } from '@iconify/vue';
             </span>
         </div>
 
-        <span class="flex gap-2.5 items-center text-mist-300 text-sm mt-2.5"><span>Friends</span> <Icon icon="lucide:chevron-down" inline /> </span>
+        <span class="flex gap-2.5 items-center text-mist-300 text-sm mt-2.5"
+            ><span>Friends</span> <Icon icon="lucide:chevron-down" inline />
+        </span>
 
         <div class="flex items-center gap-2.5 ml-5" v-for="i in range(7)" :key="i">
-            <div
-                class="h-8 w-8 rounded-full bg-blue-300 grid place-items-center text-mist-800 text-base"
-            ></div>
+            <div class="h-8 w-8 rounded-full bg-blue-300 grid place-items-center text-mist-800 text-base"></div>
 
             <span class="flex flex-col">
                 <span>User {{ i + 1 }}</span>

@@ -3,9 +3,9 @@ import ClientFooter from './ClientFooter.vue';
 import MainFooter from './MainFooter.vue';
 import ClientSidebar from './ClientSidebar.vue';
 import ClientTabs from './ClientTabs.vue';
-import ClientHeader from './ClientHeader.vue'
-import MainHeader from './MainHeader.vue'
-import MainContent from './MainContent.vue'
+import ClientHeader from './ClientHeader.vue';
+import MainHeader from './MainHeader.vue';
+import MainContent from './MainContent.vue';
 </script>
 
 <template>
@@ -20,16 +20,16 @@ import MainContent from './MainContent.vue'
 
         <ClientFooter />
 
-        <MainHeader />
+        <MainHeader :position="0" />
 
-        <MainContent />
+        <MainContent :position="0" />
 
-        <MainFooter />
+        <MainFooter :position="0" />
 
-        <MainHeader />
+        <MainHeader :position="1" />
 
-        <MainContent />
+        <MainContent :position="1" />
 
-        <MainFooter />
+        <MainFooter :position="1" />
     </div>
 </template>
