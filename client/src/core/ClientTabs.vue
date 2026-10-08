@@ -3,7 +3,9 @@ import { range } from '@/util';
 </script>
 
 <template>
-    <nav class="col-[1/1] row-[1/4] mx-2.5 mt-2 px-0.5 space-y-2.5 justify-center overflow-y-auto scrollbar-none">
+    <nav
+        class="col-[1/1] row-[1/4] mx-2.5 mt-2.5 px-0.5 pt-0.5 space-y-2.5 justify-center overflow-y-auto scrollbar-none"
+    >
         <div
             v-for="i in range(3)"
             :key="i"
