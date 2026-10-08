@@ -7,7 +7,16 @@ import { Icon } from '@iconify/vue';
     <aside
         class="col-[2/2] row-[2/4] flex-1 p-4 gap-2.5 flex flex-col border-l border-mist-700 bg-mist-900 rounded-tl-lg overflow-y-auto scrollbar-none"
     >
-        <span class="flex gap-2.5 items-center"> <Icon icon="lucide:home" inline /> Home </span>
+    <div class="flex items-center gap-2.5">
+        <div
+            class="h-8 w-8 aspect-square rounded-full bg-blue-300 grid place-items-center text-mist-800 text-base"
+        ></div>
+
+            <span class="flex flex-col">
+                <span>You</span>
+                <span class="text-xs text-mist-300 truncate">Super cool status</span>
+            </span>
+        </div>
 
         <span class="flex gap-2.5 items-center text-mist-300 text-sm mt-2.5"><span>Following</span> <Icon icon="lucide:chevron-down" inline /></span>
 

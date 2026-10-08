@@ -40,6 +40,8 @@ const tokenDraft = ref('');
             <Icon icon="lucide:telescope" class="h-5 w-5" />
         </button>
 
+        <hr class="border-l border-mist-700 h-3/4 m-2.5"/>
+
         <button
             @click="toggleConnectionsPane"
             class="mr-auto flex -space-x-3 overflow-hidden items-center drop-shadow-2xl rounded-lg hover:bg-mist-700 active:bg-mist-600 py-1 px-2.5"
