@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import ClientFooter from './ClientFooter.vue';
 import MainFooter from './MainFooter.vue';
-import ProfileFooter from './ProfileFooter.vue';
-import MembersSidebar from './MembersSidebar.vue';
-import ThreadsSidebar from './ThreadsSidebar.vue';
-import TabNav from './TabNav.vue';
-import TabNav2 from './TabNav2.vue';
+import ThreadFooter from './ThreadFooter.vue';
+import ThreadSidebar from './ThreadSidebar.vue';
+import ClientSidebar from './ClientSidebar.vue';
+import ClientTabs from './ClientTabs.vue';
+import ThreadTabs from './ThreadTabs.vue';
 </script>
 
 <template>
     <div
         class="w-dvw h-dvh bg-mist-950 text-mist-100 grid grid-cols-[--spacing(16)_--spacing(64)_1fr_--spacing(64)_--spacing(16)] grid-rows-[--spacing(calc(16-2.5))_1fr_--spacing(16)]"
     >
-        <TabNav />
+        <ClientTabs />
 
         <header
             class="col-[2/2] row-[1/1] border-l border-b border-mist-700 p-4 flex gap-2.5 items-center rounded-l-lg bg-mist-800"
@@ -21,7 +21,7 @@ import TabNav2 from './TabNav2.vue';
             Server Name
         </header>
 
-        <ThreadsSidebar />
+        <ClientSidebar />
 
         <header class="col-[3/3] row-[1/1] border-l border-b border-mist-700 p-4 flex gap-2.5 items-center bg-mist-800">
             <div class="bg-mist-700 rounded-lg w-5 h-5 grid place-items-center text-xs">#</div>
@@ -34,14 +34,14 @@ import TabNav2 from './TabNav2.vue';
             class="col-[4/4] row-[1/1] border-l border-b border-r border-mist-700 p-4 bg-mist-800 rounded-r-lg"
         ></header>
 
-        <MembersSidebar />
+        <ThreadSidebar />
 
-        <TabNav2 />
+        <ThreadTabs />
 
         <ClientFooter />
 
         <MainFooter />
 
-        <ProfileFooter />
+        <ThreadFooter />
     </div>
 </template>
