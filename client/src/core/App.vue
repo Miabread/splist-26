@@ -6,6 +6,10 @@ import ThreadSidebar from './ThreadSidebar.vue';
 import ClientSidebar from './ClientSidebar.vue';
 import ClientTabs from './ClientTabs.vue';
 import ThreadTabs from './ThreadTabs.vue';
+import ClientHeader from './ClientHeader.vue'
+import MainHeader from './MainHeader.vue'
+import ThreadHeader from './ThreadHeader.vue'
+import MainContent from './MainContent.vue'
 </script>
 
 <template>
@@ -14,25 +18,15 @@ import ThreadTabs from './ThreadTabs.vue';
     >
         <ClientTabs />
 
-        <header
-            class="col-[2/2] row-[1/1] border-l border-b border-mist-700 p-4 flex gap-2.5 items-center rounded-l-lg bg-mist-800"
-        >
-            <div class="bg-orange-300 rounded-lg w-5 h-5 grid place-items-center text-mist-800 text-xs"></div>
-            Spool Name
-        </header>
+        <ClientHeader />
 
         <ClientSidebar />
 
-        <header class="col-[3/3] row-[1/1] border-l border-b border-mist-700 p-4 flex gap-2.5 items-center bg-mist-800">
-            <div class="bg-mist-700 rounded-lg w-5 h-5 grid place-items-center text-xs">#</div>
-            Thread Name
-        </header>
+        <MainHeader />
 
-        <main class="col-[3/3] row-[2/4] p-4 border-l border-mist-700 bg-mist-900">Thread content</main>
+        <MainContent />
 
-        <header
-            class="col-[4/4] row-[1/1] border-l border-b border-r border-mist-700 p-4 bg-mist-800 rounded-r-lg"
-        ></header>
+        <ThreadHeader />
 
         <ThreadSidebar />
 
