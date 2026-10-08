@@ -14,7 +14,7 @@ import MainContent from './MainContent.vue'
 
 <template>
     <div
-        class="w-dvw h-dvh bg-mist-950 text-mist-100 grid grid-cols-[--spacing(16)_--spacing(64)_1fr_--spacing(64)_--spacing(16)] grid-rows-[--spacing(calc(16-2.5))_1fr_--spacing(16)]"
+        class="w-dvw h-dvh bg-mist-950 text-mist-100 grid grid-cols-[--spacing(16)_--spacing(64)_2fr_1fr_--spacing(16)] grid-rows-[--spacing(calc(16-2.5))_1fr_--spacing(16)]"
     >
         <ClientTabs />
 

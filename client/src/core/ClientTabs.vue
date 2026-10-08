@@ -4,7 +4,7 @@ import { range } from '@/util';
 
 <template>
     <nav
-        class="col-[1/1] row-[1/4] mx-2.5 mt-2.5 px-0.5 pt-0.5 space-y-2.5 justify-center overflow-y-auto scrollbar-none"
+        class="col-[1/1] row-[1/4] mx-2.5 mt-2.5 px-0.5 pt-0.5 space-y-2.5 overflow-y-auto scrollbar-none"
     >
         <div
             v-for="i in range(3)"
