@@ -4,7 +4,7 @@ import { range } from '@/util';
 
 <template>
     <aside
-        class="col-[4/4] row-[2/4] p-4 gap-2.5 flex flex-col border-l border-r rounded-tr border-mist-700 bg-mist-900"
+        class="col-[4/4] row-[2/4] p-4 gap-2.5 flex flex-col border-l border-r rounded-tr-lg border-mist-700 bg-mist-900"
     >
         <div class="flex items-center gap-2.5" v-for="i in range(7)" :key="i">
             <div
