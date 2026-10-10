@@ -5,7 +5,7 @@ import { Icon } from '@iconify/vue';
 
 <template>
     <aside
-        class="col-[2/2] row-[2/4] flex-1 p-4 gap-2.5 flex flex-col border-l border-mist-700 bg-mist-900 rounded-tl-lg overflow-y-auto scrollbar-none"
+        class="col-[2/3] row-[2/3] flex-1 p-4 gap-2.5 flex flex-col border-l border-mist-700 bg-mist-900 rounded-tl-lg overflow-y-auto scrollbar-none"
     >
         <div class="flex items-center gap-2.5">
             <div
@@ -44,4 +44,5 @@ import { Icon } from '@iconify/vue';
             </span>
         </div>
     </aside>
+    <div class="col-[2/3] row-[3/4] border-l border-mist-700 bg-mist-900"></div>
 </template>
