@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { cn } from '@/util';
+import { messages } from '@/mock';
 import { Icon } from '@iconify/vue';
 
 interface Props {
@@ -7,6 +9,13 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const draft = ref('');
+
+const sendMessage = () => {
+    messages.push(draft.value);
+    draft.value = '';
+};
 </script>
 
 <template>
@@ -21,6 +30,8 @@ const props = defineProps<Props>();
         <textarea
             class="w-full h-full text-mist-300 flex items-center resize-none content-center focus:outline-none"
             :placeholder="`Message Thread ${props.position + 1}`"
+            v-model="draft"
+            @keydown.enter.exact.prevent="sendMessage"
         />
         <hr class="border-l border-mist-700 h-3/4 m-2.5" />
         <button
